@@ -132,7 +132,6 @@ PRODUCT_COPY_FILES += \
 	device/motorola/sholes/proprietary/sholes-keypad.kl:system/usr/keylayout/sholes-keypad.kl \
 	device/motorola/sholes/proprietary/pppd-ril.options:system/etc/ppp/peers/pppd-ril.options \
 	device/motorola/sholes/proprietary/01_Vendor_ti_omx.cfg:system/etc/01_Vendor_ti_omx.cfg \
-	device/motorola/sholes/proprietary/gps.conf:system/etc/gps.conf \
 	device/motorola/sholes/proprietary/fw_wlan1271.bin:system/etc/wifi/fw_wlan1271.bin \
 	device/motorola/sholes/proprietary/tiwlan.ini:system/etc/wifi/tiwlan.ini \
 	device/motorola/sholes/proprietary/cacerts.bks:system/etc/security/cacerts.bks \
