@@ -1,8 +1,10 @@
 ################# DEVICE SPECIFIC STUFF #####################
 #
-# Below are some things that make sure that sapphire runs
+# Below are some things that make sure that the rom runs
 # properly on sholes (droid) hardware
 #
+
+$(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 DEVICE_PACKAGE_OVERLAYS := device/motorola/sholes/overlay
 
@@ -27,6 +29,48 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.media.dec.jpeg.memcap=20000000 \
 	dalvik.vm.lockprof.threshold=500 \
 	dalvik.vm.dexopt-flags=m=y
+
+# modules to include
+PRODUCT_COPY_FILES += \
+	device/motorola/sholes/kernel/ah6.ko:system/lib/modules/ah6.ko \
+	device/motorola/sholes/kernel/cifs.ko:system/lib/modules/cifs.ko \
+	device/motorola/sholes/kernel/esp6.ko:system/lib/modules/esp6.ko \
+	device/motorola/sholes/kernel/exportfs.ko:system/lib/modules/exportfs.ko \
+	device/motorola/sholes/kernel/ext2.ko:system/lib/modules/ext2.ko \
+	device/motorola/sholes/kernel/ext3.ko:system/lib/modules/ext3.ko \
+	device/motorola/sholes/kernel/ext4.ko:system/lib/modules/ext4.ko \
+	device/motorola/sholes/kernel/fuse.ko:system/lib/modules/fuse.ko \
+	device/motorola/sholes/kernel/ip6_tunnel.ko:system/lib/modules/ip6_tunnel.ko \
+	device/motorola/sholes/kernel/ipcomp6.ko:system/lib/modules/ipcomp6.ko \
+	device/motorola/sholes/kernel/ipv6.ko:system/lib/modules/ipv6.ko \
+	device/motorola/sholes/kernel/jbd2.ko:system/lib/modules/jbd2.ko \
+	device/motorola/sholes/kernel/jbd.ko:system/lib/modules/jbd.ko \
+	device/motorola/sholes/kernel/lockd.ko:system/lib/modules/lockd.ko \
+	device/motorola/sholes/kernel/mbcache.ko:system/lib/modules/mbcache.ko \
+	device/motorola/sholes/kernel/mip6.ko:system/lib/modules/mip6.ko \
+	device/motorola/sholes/kernel/nfs.ko:system/lib/modules/nfs.ko \
+	device/motorola/sholes/kernel/ramzswap.ko:system/lib/modules/ramzswap.ko \
+	device/motorola/sholes/kernel/sit.ko:system/lib/modules/sit.ko \
+	device/motorola/sholes/kernel/squashfs.ko:system/lib/modules/squashfs.ko \
+	device/motorola/sholes/kernel/sunrpc.ko:system/lib/modules/sunrpc.ko \
+	device/motorola/sholes/kernel/tiwlan_drv.ko:system/lib/modules/tiwlan_drv.ko \
+	device/motorola/sholes/kernel/tunnel4.ko:system/lib/modules/tunnel4.ko \
+	device/motorola/sholes/kernel/ufs.ko:system/lib/modules/ufs.ko \
+	device/motorola/sholes/kernel/xfrm6_mode_beet.ko:system/lib/modules/xfrm6_mode_beet.ko \
+	device/motorola/sholes/kernel/xfrm6_mode_transport.ko:system/lib/modules/xfrm6_mode_transport.ko \
+	device/motorola/sholes/kernel/xfrm6_mode_tunnel.ko:system/lib/modules/xfrm6_mode_tunnel.ko \
+	device/motorola/sholes/kernel/xfrm_ipcomp.ko:system/lib/modules/xfrm_ipcomp.ko \
+	device/motorola/sholes/kernel/xfs.ko:system/lib/modules/xfs.ko
+
+PRODUCT_COPY_FILES += \
+	frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+	frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+	frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+	frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+	frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+	frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+	frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+	frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
 
 ifeq ($(USE_GOOGLE_PROPRIETARIES),true)
 PRODUCT_COPY_FILES += \
@@ -70,38 +114,6 @@ PRODUCT_COPY_FILES += \
 	device/motorola/sholes/proprietary/com.google.android.maps.jar:system/framework/com.google.android.maps.jar
 endif
 
-# modules to include
-PRODUCT_COPY_FILES += \
-	device/motorola/sholes/kernel/ah6.ko:system/lib/modules/ah6.ko \
-	device/motorola/sholes/kernel/cifs.ko:system/lib/modules/cifs.ko \
-	device/motorola/sholes/kernel/esp6.ko:system/lib/modules/esp6.ko \
-	device/motorola/sholes/kernel/exportfs.ko:system/lib/modules/exportfs.ko \
-	device/motorola/sholes/kernel/ext2.ko:system/lib/modules/ext2.ko \
-	device/motorola/sholes/kernel/ext3.ko:system/lib/modules/ext3.ko \
-	device/motorola/sholes/kernel/ext4.ko:system/lib/modules/ext4.ko \
-	device/motorola/sholes/kernel/fuse.ko:system/lib/modules/fuse.ko \
-	device/motorola/sholes/kernel/ip6_tunnel.ko:system/lib/modules/ip6_tunnel.ko \
-	device/motorola/sholes/kernel/ipcomp6.ko:system/lib/modules/ipcomp6.ko \
-	device/motorola/sholes/kernel/ipv6.ko:system/lib/modules/ipv6.ko \
-	device/motorola/sholes/kernel/jbd2.ko:system/lib/modules/jbd2.ko \
-	device/motorola/sholes/kernel/jbd.ko:system/lib/modules/jbd.ko \
-	device/motorola/sholes/kernel/lockd.ko:system/lib/modules/lockd.ko \
-	device/motorola/sholes/kernel/mbcache.ko:system/lib/modules/mbcache.ko \
-	device/motorola/sholes/kernel/mip6.ko:system/lib/modules/mip6.ko \
-	device/motorola/sholes/kernel/nfs.ko:system/lib/modules/nfs.ko \
-	device/motorola/sholes/kernel/ramzswap.ko:system/lib/modules/ramzswap.ko \
-	device/motorola/sholes/kernel/sit.ko:system/lib/modules/sit.ko \
-	device/motorola/sholes/kernel/squashfs.ko:system/lib/modules/squashfs.ko \
-	device/motorola/sholes/kernel/sunrpc.ko:system/lib/modules/sunrpc.ko \
-	device/motorola/sholes/kernel/tiwlan_drv.ko:system/lib/modules/tiwlan_drv.ko \
-	device/motorola/sholes/kernel/tunnel4.ko:system/lib/modules/tunnel4.ko \
-	device/motorola/sholes/kernel/ufs.ko:system/lib/modules/ufs.ko \
-	device/motorola/sholes/kernel/xfrm6_mode_beet.ko:system/lib/modules/xfrm6_mode_beet.ko \
-	device/motorola/sholes/kernel/xfrm6_mode_transport.ko:system/lib/modules/xfrm6_mode_transport.ko \
-	device/motorola/sholes/kernel/xfrm6_mode_tunnel.ko:system/lib/modules/xfrm6_mode_tunnel.ko \
-	device/motorola/sholes/kernel/xfrm_ipcomp.ko:system/lib/modules/xfrm_ipcomp.ko \
-	device/motorola/sholes/kernel/xfs.ko:system/lib/modules/xfs.ko
-
 ifeq ($(USE_MOTOROLA_PROPRIETARIES),true)
 PRODUCT_COPY_FILES += \
 	device/motorola/sholes/proprietary/bthelp:system/bin/bthelp \
@@ -130,15 +142,7 @@ PRODUCT_COPY_FILES += \
 	device/motorola/sholes/proprietary/media_profiles.xml:system/etc/media_profiles.xml \
 	device/motorola/sholes/proprietary/cameraCalFileDef.bin:system/etc/cameraCalFileDef.bin \
 	device/motorola/sholes/proprietary/excluded-input-devices.xml:system/etc/excluded-input-devices.xml \
-	device/motorola/sholes/proprietary/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
-	device/motorola/sholes/proprietary/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-	device/motorola/sholes/proprietary/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-	device/motorola/sholes/proprietary/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
-	device/motorola/sholes/proprietary/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-	device/motorola/sholes/proprietary/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-	device/motorola/sholes/proprietary/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
 	device/motorola/sholes/proprietary/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
-	device/motorola/sholes/proprietary/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
 	device/motorola/sholes/proprietary/features.xml:system/etc/permissions/features.xml \
 	device/motorola/sholes/proprietary/hosts:system/etc/hosts \
 	device/motorola/sholes/proprietary/vold.fstab:system/etc/vold.fstab \
