@@ -4,10 +4,13 @@
 # properly on sholes (droid) hardware
 #
 
+# gps info
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
+# device overlay
 DEVICE_PACKAGE_OVERLAYS := device/motorola/sholes/overlay
 
+# properties for sholes
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.com.android.wifi-watchlist=GoogleGuest \
 	ro.error.receiver.system.apps=com.google.android.feedback \
@@ -62,6 +65,13 @@ PRODUCT_COPY_FILES += \
 	device/motorola/sholes/kernel/xfrm_ipcomp.ko:system/lib/modules/xfrm_ipcomp.ko \
 	device/motorola/sholes/kernel/xfs.ko:system/lib/modules/xfs.ko
 
+# it's a hdpi device
+PRODUCT_LOCALES += hdpi
+
+# enough space for precise gc info
+PRODUCT_TAGS += dalvik.gc.type-precise
+
+# copy some permissions files
 PRODUCT_COPY_FILES += \
 	frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
 	frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -70,8 +80,10 @@ PRODUCT_COPY_FILES += \
 	frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
 	frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
 	frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-	frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
+	frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
+	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
+# google proprietaries
 ifeq ($(USE_GOOGLE_PROPRIETARIES),true)
 PRODUCT_COPY_FILES += \
 	device/motorola/sholes/proprietary/CorpCal.apk:system/app/CorpCal.apk \
@@ -114,6 +126,7 @@ PRODUCT_COPY_FILES += \
 	device/motorola/sholes/proprietary/com.google.android.maps.jar:system/framework/com.google.android.maps.jar
 endif
 
+# motorola proprietaries
 ifeq ($(USE_MOTOROLA_PROPRIETARIES),true)
 PRODUCT_COPY_FILES += \
 	device/motorola/sholes/proprietary/bthelp:system/bin/bthelp \
@@ -141,7 +154,6 @@ PRODUCT_COPY_FILES += \
 	device/motorola/sholes/proprietary/media_profiles.xml:system/etc/media_profiles.xml \
 	device/motorola/sholes/proprietary/cameraCalFileDef.bin:system/etc/cameraCalFileDef.bin \
 	device/motorola/sholes/proprietary/excluded-input-devices.xml:system/etc/excluded-input-devices.xml \
-	device/motorola/sholes/proprietary/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
 	device/motorola/sholes/proprietary/features.xml:system/etc/permissions/features.xml \
 	device/motorola/sholes/proprietary/hosts:system/etc/hosts \
 	device/motorola/sholes/proprietary/vold.fstab:system/etc/vold.fstab \
