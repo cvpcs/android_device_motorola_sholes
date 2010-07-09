@@ -2,6 +2,12 @@ LOCAL_PATH := $(call my-dir)
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel/zImage
+
+# modules to include for default kernel
+PRODUCT_COPY_FILES += $(shell \
+        find $(LOCAL_PATH)/kernel -name '*.ko' \
+        | sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
+        | tr '\n' ' ')
 endif
 
 file := $(INSTALLED_KERNEL_TARGET)
@@ -14,7 +20,7 @@ ALL_PREBUILT += $(file)
 $(file) : $(LOCAL_PATH)/init.sholes.rc | $(ACP)
 	$(transform-prebuilt-to-target)
 
-ifeq ($(USE_MOTOROLA_PROPRIETARIES),true)
+ifneq ($(filter motorola,$(USE_PROPRIETARIES)),)
 include $(CLEAR_VARS)
 LOCAL_MODULE := libmoto_gps.so
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES

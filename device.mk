@@ -33,12 +33,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.lockprof.threshold=500 \
 	dalvik.vm.dexopt-flags=m=y
 
-# modules to include
-PRODUCT_COPY_FILES += $(shell \
-	find device/motorola/sholes/kernel -name '*.ko' \
-	| sed -r 's/^\/?(.*\/)([^/ ]+)$$/\1\2:system\/lib\/modules\/\2/' \
-	| tr '\n' ' ')
-
 # it's a hdpi device
 PRODUCT_LOCALES += hdpi
 
