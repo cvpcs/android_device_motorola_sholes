@@ -60,11 +60,14 @@ PRODUCT_COPY_FILES += \
 # include proprietaries
 ifneq ($(USE_PROPRIETARIES),)
 $(foreach prop,$(USE_PROPRIETARIES), \
-  $(eval \
+  $(if $(wildcard device/motorola/sholes/proprietary.$(prop)), \
+    $(eval \
 PRODUCT_COPY_FILES += $(shell \
 	cat device/motorola/sholes/proprietary.$(prop) \
 	| sed -r 's/^\/(.*\/)([^/ ]+)$$/device\/motorola\/sholes\/proprietary\/\2:\1\2/' \
 	| tr '\n' ' ') \
+     ), \
+    $(error Cannot include proprietaries from $(prop). List file device/motorola/sholes/proprietary.$(prop) does not exist) \
    ) \
  )
 endif
