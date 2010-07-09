@@ -7,7 +7,6 @@ function print_usage () {
     echo "    extract_from - one of:"
     echo "      adb - extract from adb"
     echo "      dir - a directory to extract from"
-    echo "      file - a zip file to extract from"
     echo "    extract_to - a directory to extract to (will be created)"
 }
 
@@ -15,6 +14,23 @@ function extract_file () {
     from_file="$1"
     from_loc="$2"
     to_loc="$3"
+
+    if [ ! -d "${to_loc}" ] ; then
+        echo "${to_loc} directory does not exist"
+        return
+    fi
+
+    if [ "${from_loc}" == "adb" ] ; then
+        echo "Extracting ${from_file} from adb..."
+        adb pull "${from_file}" "${to_loc}/"
+    else
+        if [ -d "${from_loc}" ] ; then
+            echo "Copying ${from_file} from ${from_loc}"
+            cp "${from_loc}/${from_file}" "${to_loc}/"
+        else
+            echo "${from_loc} is not a valid from location"
+        fi
+    fi
 }
 
 FILE_LIST=$1
@@ -29,6 +45,14 @@ if [ ! -e "${FILE_LIST}" ] ; then
     exit 1
 fi
 
+# check our source
+if [ ! -d "${EXTRACT_FROM}" && "${EXTRACT_FROM}" != "adb" ] ; then
+    print_usage
+    echo ""
+    echo "You must specify a valid place to extract from"
+    exit 1
+fi
+
 # get our list of files
 FILES=$(cat "${FILE_LIST}")
 
@@ -37,5 +61,5 @@ mkdir -p "${EXTRACT_TO}"
 
 # extract!
 for file in ${FILES}; do
-
+    extract_file "${file}" "${EXTRACT_FROM}" "${EXTRACT_TO}"
 done
