@@ -53,6 +53,15 @@ PRODUCT_COPY_FILES += \
 
 # include proprietaries
 ifneq ($(USE_PROPRIETARIES),)
+# if we aren't including google, we need to include some basic files
+ifeq ($(filter google,$(USE_PROPRIETARIES)),)
+PRODUCT_PACKAGES += \
+	Provision \
+	LatinIME \
+	QuickSearchBox
+endif
+
+# actually include the props
 $(foreach prop,$(USE_PROPRIETARIES), \
   $(if $(wildcard device/motorola/sholes/proprietary.$(prop)), \
     $(eval \
@@ -65,3 +74,4 @@ PRODUCT_COPY_FILES += $(shell \
    ) \
  )
 endif
+
