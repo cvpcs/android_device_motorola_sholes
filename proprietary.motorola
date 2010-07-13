@@ -88,6 +88,7 @@
 /system/lib/libVendor_ti_omx.so
 /system/lib/libzxing.so
 /system/lib/zxing.so
+/system/media/audio/notifications/droid.ogg
 /system/tts/lang_pico/de-DE_gl0_sg.bin
 /system/tts/lang_pico/de-DE_ta.bin
 /system/tts/lang_pico/en-GB_kh0_sg.bin
