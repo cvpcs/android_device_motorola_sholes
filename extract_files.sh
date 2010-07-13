@@ -46,20 +46,17 @@ if [ ! -e "${FILE_LIST}" ] ; then
 fi
 
 # check our source
-if [ ! -d "${EXTRACT_FROM}" && "${EXTRACT_FROM}" != "adb" ] ; then
+if [ ! -d "${EXTRACT_FROM}" -a "${EXTRACT_FROM}" != "adb" ] ; then
     print_usage
     echo ""
     echo "You must specify a valid place to extract from"
     exit 1
 fi
 
-# get our list of files
-FILES=$(cat "${FILE_LIST}")
-
 # make our extraction directory
 mkdir -p "${EXTRACT_TO}"
 
 # extract!
-for file in ${FILES}; do
+for file in $(cat "${FILE_LIST}" | sed -r 's/ /_/g'); do
     extract_file "${file}" "${EXTRACT_FROM}" "${EXTRACT_TO}"
 done
