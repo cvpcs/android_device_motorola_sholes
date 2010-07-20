@@ -53,6 +53,13 @@ if [ ! -d "${EXTRACT_FROM}" -a "${EXTRACT_FROM}" != "adb" ] ; then
     exit 1
 fi
 
+if [ -z "${EXTRACT_TO}" ] ; then
+    print_usage
+    echo ""
+    echo "You must specify and extraction location"
+    exit 1
+fi
+
 # make our extraction directory
 mkdir -p "${EXTRACT_TO}"
 
