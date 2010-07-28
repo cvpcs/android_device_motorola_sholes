@@ -20,7 +20,6 @@ ALL_PREBUILT += $(file)
 $(file) : $(LOCAL_PATH)/init.sholes.rc | $(ACP)
 	$(transform-prebuilt-to-target)
 
-ifneq ($(filter motorola,$(USE_PROPRIETARIES)),)
 include $(CLEAR_VARS)
 LOCAL_MODULE := libmoto_gps.so
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
@@ -76,6 +75,3 @@ $(file) : $(TARGET_OUT)/usr/keychars/qwerty.kcm.bin
 	@mkdir -p $(dir $@)
 	@rm -rf $@
 	$(hide) ln -sf qwerty.kcm.bin $@
-else
-
-endif
