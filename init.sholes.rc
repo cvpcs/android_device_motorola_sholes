@@ -4,14 +4,25 @@ on early-boot
 # space on sholes.  These numbers are in pages (4k).  Must be kept
 # in sync with init.rc.  This must be done before the regular init.rc
 # since these properies can't change once set.
-    setprop ro.FOREGROUND_APP_MEM 2048
-    setprop ro.VISIBLE_APP_MEM 3072
-    setprop ro.SECONDARY_SERVER_MEM 6144
-    setprop ro.BACKUP_APP_MEM 6144
-    setprop ro.HOME_APP_MEM 6144
-    setprop ro.HIDDEN_APP_MEM 7168
-    setprop ro.CONTENT_PROVIDER_MEM 8192
-    setprop ro.EMPTY_APP_MEM 8192
+#    setprop ro.FOREGROUND_APP_MEM 2048
+#    setprop ro.VISIBLE_APP_MEM 3072
+#    setprop ro.SECONDARY_SERVER_MEM 6144
+#    setprop ro.BACKUP_APP_MEM 6144
+#    setprop ro.HOME_APP_MEM 6144
+#    setprop ro.HIDDEN_APP_MEM 7168
+#    setprop ro.CONTENT_PROVIDER_MEM 8192
+#    setprop ro.EMPTY_APP_MEM 8192
+#
+# I am resetting this to the default according to aosp
+#
+    setprop ro.FOREGROUND_APP_MEM 1536
+    setprop ro.VISIBLE_APP_MEM 2048
+    setprop ro.SECONDARY_SERVER_MEM 4096
+    setprop ro.BACKUP_APP_MEM 4096
+    setprop ro.HOME_APP_MEM 4096
+    setprop ro.HIDDEN_APP_MEM 5120
+    setprop ro.CONTENT_PROVIDER_MEM 5632
+    setprop ro.EMPTY_APP_MEM 6144
     
     chmod 0666 /dev/DspBridge
     class_start media_early_init
