@@ -62,7 +62,6 @@
 /system/lib/libHPImgApi.so
 /system/lib/libIMGegl.so
 /system/lib/libLCML.so
-/system/lib/liblvmxipc.so
 /system/lib/libmoto_ril.so
 /system/lib/liboemcamera.so
 /system/lib/libOMX_Core.so
