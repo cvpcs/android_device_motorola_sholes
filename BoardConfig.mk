@@ -50,7 +50,7 @@ USE_CAMERA_STUB := false
 BOARD_EGL_CFG := device/motorola/sholes/egl.cfg
 
 TARGET_OTA_SCRIPT_MODE := edify
-TARGET_NO_RECOVERY := true
+TARGET_OTA_NO_RECOVERY := true
 
 ALLOW_LGPL := true
 USE_SHOLES_PROPERTY := true
