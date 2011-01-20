@@ -52,6 +52,15 @@ PRODUCT_COPY_FILES += \
 	frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
+# include packages that are board-required
+PRODUCT_PACKAGES += \
+	libmoto_gps \
+	libaudio \
+	libaudiopolicy \
+	libcamera \
+	libril_rds \
+	libnmea
+
 # include packages
 PRODUCT_PACKAGES += \
 	librs_jni \
