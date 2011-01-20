@@ -55,7 +55,6 @@
 /system/lib/egl/libGLESv2_POWERVR_SGX530_121.so
 /system/lib/hw/gralloc.omap3.so
 /system/lib/hw/lights.sholes.so
-/system/lib/hw/sensors.sholes.so
 /system/lib/libbattd.so
 /system/lib/libglslcompiler.so
 /system/lib/libHPImgApi.so
