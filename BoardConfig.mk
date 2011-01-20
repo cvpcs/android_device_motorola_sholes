@@ -11,7 +11,7 @@ TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
 
 TARGET_NO_BOOTLOADER := false
 
-#HARDWARE_OMX := true
+HARDWARE_OMX := true
 
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER := CUSTOM
@@ -28,6 +28,8 @@ TARGET_BOOTLOADER_BOARD_NAME := sholes
 
 BOARD_KERNEL_CMDLINE := console=ttyS2,115200n8 rw mem=244M@0x80C00000 init=/init ip=off brdrev=P3A_CDMA mtdparts=omap2-nand.0:640k@128k(mbm),384k@1408k(cdt),384k@3328k(lbl),384k@6272k(misc),3584k(boot),4608k(recovery),143744k(system),94848k(cache),268032k(userdata),2m(kpanic)
 
+BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+
 BOARD_HAVE_BLUETOOTH := true
 
 BOARD_GL_TEX_POW2_DIMENSION_REQUIRED := true
@@ -35,6 +37,10 @@ BOARD_GL_TEX_POW2_DIMENSION_REQUIRED := true
 TARGET_HARDWARE_3D := false
 
 BOARD_GPS_LIBRARIES := libmoto_gps
+
+BOARD_USES_FROYO_LIBCAMERA := true
+
+BOARD_VENDOR_QCOM_AMSS_VERSION := 3200
 
 USE_PV_WINDOWS_MEDIA := false
 
@@ -49,7 +55,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 USE_CAMERA_STUB := false
 BOARD_EGL_CFG := device/motorola/sholes/egl.cfg
 
-TARGET_OTA_SCRIPT_MODE := edify
 TARGET_OTA_NO_RECOVERY := true
 
 ALLOW_LGPL := true

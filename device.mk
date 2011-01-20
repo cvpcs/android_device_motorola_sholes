@@ -49,7 +49,32 @@ PRODUCT_COPY_FILES += \
 	frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
 	frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
 	frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
+	frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+
+# include packages
+PRODUCT_PACKAGES += \
+	librs_jni \
+	tiwlan.ini \
+	dspexec \
+	libbridge \
+	overlay.omap3 \
+	wlan_cu \
+	libtiOsLib \
+	wlan_loader \
+	libCustomWifi \
+	wpa_supplicant.conf \
+	dhcpcd.conf \
+	libOMX.TI.AAC.encode \
+	libOMX.TI.AMR.encode \
+	libOMX.TI.WBAMR.encode \
+	libOMX.TI.JPEG.Encoder \
+	libLCML \
+	libOMX_Core \
+	libOMX.TI.Video.Decoder \
+	libOMX.TI.Video.encoder \
+	libVendor_ti_omx \
+	gps.sholes
 
 # include proprietaries
 ifneq ($(USE_PROPRIETARIES),)
