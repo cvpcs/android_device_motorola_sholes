@@ -332,5 +332,5 @@
     <!-- The default reduced-datarate notification mask -->
     <!-- 2 means give warning -->
     <integer name="config_datause_notification_type">2</integer>
-
+    <bool name="config_animateScreenLights">false</bool>
 </resources>
